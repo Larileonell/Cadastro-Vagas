@@ -8,7 +8,11 @@ const cadastroSchema = new moongose.schema({
     Plataforma: {type: String},
     remuneracao: {type: String},
     requisitos: {type: String},
-    atribuioes: {type: string}
+    atribuioes: {type: String},
+    Habilidades:{type: String},
+    habilidadesDesejaveis: {type: String},
+    vagaRemota:{type: String}, 
+    beneficios: {type: String}
 
 
 }, {versionKey: true} )

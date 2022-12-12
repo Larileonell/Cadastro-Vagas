@@ -13,7 +13,7 @@ const DATABASE_URL = process.env.DATABASE_URL;
    console.log(error); 
   } 
  }; 
-  
+
  module.exports = { 
   connect, 
  };
