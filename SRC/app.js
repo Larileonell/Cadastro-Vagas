@@ -17,7 +17,7 @@ mongoose.connect(`${process.env.DATABASE}`,
    
     app.use(express.json())
     app.use('/minha-rota-de-documentacao', swaggerUi.serve, swaggerUi.setup(swaggerFile));
-    app.use("/vagas/cadastro", rotaCadastro)
-    app.use("/vagas/login", loginRouter)
+    app.use("/login", loginRouter)
+    app.use("/cadastro", rotaCadastro)
    
     module.exports = app
