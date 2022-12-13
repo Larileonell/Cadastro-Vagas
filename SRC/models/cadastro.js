@@ -4,17 +4,45 @@ const cadastroSchema = new moongose.schema({
         type: moongose.schema.types.objectId, 
         default: moongose.types.objectId
     },
-    DescriçãoVaga: {type: String},
-    Plataforma: {type: String},
-    remuneracao: {type: String},
-    requisitos: {type: String},
-    atribuioes: {type: String},
-    Habilidades:{type: String},
-    habilidadesDesejaveis: {type: String},
-    vagaRemota:{type: String}, 
-    beneficios: {type: String}
-
-
-}, {versionKey: true} )
+    DescriçãoVaga: {
+        type: String,
+      required: true,
+      unique: true,
+    },
+    Plataforma: {
+        type: String},
+    remuneracao: {
+        type: String,
+        required: true,
+    },
+    requisitos: {
+        type: String,
+        required: true
+    },
+    atribuioes: {
+        type: String,
+        required: true
+    },
+    Habilidades:{
+        type: String,
+        required: true
+    },
+    habilidadesDesejaveis: {
+        type: String,
+        required: true
+    },
+    vagaRemota:{
+        type: String,
+        required: true
+    }, 
+    beneficios: {
+        type: String,
+        required: true},
+        nomeDavaga: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: "Nome",
+        }
+},  { timestamp: true } )
 const cadastro = moongose.model('Cadastro', cadastroSchema);
 module.exports= cadastro;
