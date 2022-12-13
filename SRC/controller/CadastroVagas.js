@@ -61,12 +61,12 @@ const findAllVagas = async (req, res) => {
 const deleteVaga = async (req, res) => {
   try {
     const { id } = req.params;
-    const findGames = await cadastro.findById(id);
+    const vagas = await cadastro.findById(id);
 
-    if (findGames == null) {
+    if (vagas == null) {
       return res.status(404).json({ message: `Vaga com id de: ${id} não foi encontrada` })
     };
-    await findGames.remove();
+    await vagas.remove();
     res.status(200).json({ message: `A Vaga foi excluída  ${id} pois já foi preenchida` });
   } catch (error) {
     res.status(500).json({ message: error.message });

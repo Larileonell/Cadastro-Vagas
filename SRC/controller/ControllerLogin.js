@@ -1,7 +1,7 @@
 const usuaria = require("../models/login")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const bcryptSalt = 6;
+const bcryptSalt = 8;
 //GET
 const login = (req, res) => {
 
