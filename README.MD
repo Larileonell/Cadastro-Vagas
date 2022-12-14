@@ -1,6 +1,6 @@
 #  Projeto final {REPROGRAMA} API Para Cadastro de vagas para Mulheres TRANS E CIS na área de tech
 
-## introdução
+## Introdução
 Esse projeto final  foi pensando para ajudar todas as irmãs que estão começando agora na área de tech, a ajuda-lás a encontras as vagas que mais se encaixam no seu perfil 
 ## Objetivo
 O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas para elas ficarem de uma certa forma mais acessível para as mulheres que estão ingressando no mundo da tech.
@@ -33,14 +33,16 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
 
 ### Explemo de estrutura cadastro para login:
 {
+    
     "nome":"lari",
     "email":"larissaleonel@gmail.com",
     "senha":"*********"
 }
 ### Explemo de estrutura cadastro de vagas:
 {
-  "DescriçãoVaga": "back-end",
-  "Plataforma": "99 jobs",
+    
+    "DescriçãoVaga": "back-end",
+    "Plataforma": "99 jobs", 
     "remuneracao": "2000",
     "requisitos": "inglês fluente, experiencia na area, conhecimento em: node js, JS, AWS",
     "atribuioes": "",
