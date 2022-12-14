@@ -53,14 +53,14 @@ const atualizaVaga = async (req, res) => {
     } = req.body;
     const buscaVaga = await gamesModel.findById(id);
     if (buscaVaga == null) {
-      res.status(404).json({ message: "Game not found" });
+      res.status(404).json({ message: "vaga não definida" });
     };
 
     if (consoleId) {
       const buscaVaga = await consolesModel.findById(consoleId);
 
       if (findConsole == null) {
-        return res.status(404).json({ message: "Console not found" });
+        return res.status(404).json({ message: "vaga não encontrada" });
       };
     };
     buscaVaga.DescriçãoVaga = DescriçãoVaga || buscaVaga.DescriçãoVaga;
@@ -73,7 +73,7 @@ const atualizaVaga = async (req, res) => {
     buscaVaga.vagaRemota = vagaRemota || buscaVaga.vagaRemota;
     buscaVaga.beneficios = beneficios || buscaVaga.beneficios;
     const updateGame = await buscaVaga.save();
-    res.status(200).json({ message: "Game successfully updated", updateGame });
+    res.status(200).json({ message: "Vaga atualizada", updateGame });
   } catch (error) {
     res.status(500).json({ message: error.message });
   };
