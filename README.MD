@@ -23,7 +23,7 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
 
 -[x] A API possibilita que você faz o cadastro de alguma vaga que você achou relevante
 
--[] A API tem a função de atulizar alguma infomação em uma vaga 
+-[x] A API tem a função de atulizar alguma infomação em uma vaga 
 
 -[X] Lista todas as vagas com o parâmetro ID
 

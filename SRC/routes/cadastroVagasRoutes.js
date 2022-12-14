@@ -5,5 +5,6 @@ router.post("/cadastro", controller.cadastroVagas)
 router.get("/all", controller.findAllVagas)
 router.get("/:id", controller.findVagasId)
 router.delete("/:id", controller.deleteVaga)
+router.patch("/:id", controller.atualizaVaga);
 
 module.exports = router

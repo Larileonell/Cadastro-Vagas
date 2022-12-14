@@ -34,7 +34,51 @@ const cadastroVagas = async (req, res) => {
     return res.status(400).json({ error: err.message })
   }
 }
-//put 
+//patch
+const atualizaVaga = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      _id, 
+      DescriçãoVaga, 
+      plataforma,
+       remuneracao, 
+       requisitos, 
+       atribuioes, 
+       Habilidades, 
+       habilidadesDesejaveis,
+      vagaRemota,
+       beneficios
+     
+    } = req.body;
+    const buscaVaga = await gamesModel.findById(id);
+    if (buscaVaga == null) {
+      res.status(404).json({ message: "Game not found" });
+    };
+
+    if (consoleId) {
+      const buscaVaga = await consolesModel.findById(consoleId);
+
+      if (findConsole == null) {
+        return res.status(404).json({ message: "Console not found" });
+      };
+    };
+    buscaVaga.DescriçãoVaga = DescriçãoVaga || buscaVaga.DescriçãoVaga;
+    buscaVaga.plataforma = plataforma|| buscaVaga.plataforma;
+    buscaVaga.remuneracao = remuneracao|| buscaVaga.remuneracao;
+    buscaVaga.requisitos = requisitos|| buscaVaga.requisitos;
+    buscaVaga.atribuioes =atribuioes || buscaVaga.atribuioes;
+    buscaVaga.Habilidades = Habilidades || buscaVaga.Habilidades;
+    buscaVaga.habilidadesDesejaveis = habilidadesDesejaveis|| buscaVaga.habilidadesDesejaveis;
+    buscaVaga.vagaRemota = vagaRemota || buscaVaga.vagaRemota;
+    buscaVaga.beneficios = beneficios || buscaVaga.beneficios;
+    const updateGame = await buscaVaga.save();
+    res.status(200).json({ message: "Game successfully updated", updateGame });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  };
+};
+
 //GET
 const findAllVagas = async (req, res) => {
     try {
@@ -76,5 +120,6 @@ module.exports ={
     cadastroVagas,
     findAllVagas, 
     findVagasId,
-    deleteVaga
+    deleteVaga,
+    atualizaVaga
 }

@@ -19,7 +19,7 @@ const cadastroSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    atribuioes: {
+    atribuicoes: {
         type: String,
         required: true
     },
