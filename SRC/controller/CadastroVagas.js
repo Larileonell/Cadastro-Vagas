@@ -28,10 +28,10 @@ const cadastroVagas = async (req, res) => {
         }
       })
       .catch((err) => {
-        response.status(500).json(err);
+        res.status(500).json(err);
       });
   } catch (err) {
-    return response.status(400).json({ error: err.message })
+    return res.status(400).json({ error: err.message })
   }
 }
 //put 

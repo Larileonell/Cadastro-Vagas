@@ -1,4 +1,4 @@
-const mongoose = require("moongose");
+const mongoose = require("mongoose");
 const cadastroSchema = new mongoose.Schema({
     _id: {
         type: mongoose.Schema.Types.ObjectId,
@@ -44,5 +44,5 @@ const cadastroSchema = new mongoose.Schema({
             ref: "Nome",
         }
 },  { timestamp: true } )
-const cadastro = mongoose.Model('Cadastro', cadastroSchema);
+const cadastro = mongoose.model('Cadastro', cadastroSchema);
 module.exports= cadastro;
