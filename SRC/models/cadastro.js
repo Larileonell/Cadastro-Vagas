@@ -1,9 +1,9 @@
-const moongose = require("moongose");
-const cadastroSchema = new moongose.schema({
+const mongoose = require("moongose");
+const cadastroSchema = new mongoose.Schema({
     _id: {
-        type: moongose.schema.types.objectId, 
-        default: moongose.types.objectId
-    },
+        type: mongoose.Schema.Types.ObjectId,
+        default: mongoose.Types.ObjectId,
+      },
     DescriçãoVaga: {
         type: String,
       required: true,
@@ -39,10 +39,10 @@ const cadastroSchema = new moongose.schema({
         type: String,
         required: true},
         nomeDavaga: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             required: true,
             ref: "Nome",
         }
 },  { timestamp: true } )
-const cadastro = moongose.model('Cadastro', cadastroSchema);
+const cadastro = mongoose.Model('Cadastro', cadastroSchema);
 module.exports= cadastro;
