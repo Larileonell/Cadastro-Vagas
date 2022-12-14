@@ -85,7 +85,7 @@ const findAllVagas = async (req, res) => {
       const allVagas = await cadastro.find().populate("nome");
       res.status(200).json(allGames);
     } catch {
-      res.status(500).json({ message: error.message });
+      res.status(500).json({ message: Error.message });
     };
   };
   const findVagasId = async (req, res) => {

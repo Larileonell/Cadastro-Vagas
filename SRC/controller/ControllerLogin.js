@@ -1,7 +1,9 @@
 const usuaria = require("../models/login")
 const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+const { default: mongoose } = require("mongoose");
 const bcryptSalt = 8;
+
 //GET
 const login = (req, res) => {
 
@@ -10,21 +12,21 @@ const login = (req, res) => {
             res.status(200).json(usuaria);
         })
         .catch((err) => {
-            response.status(400).json(err)
+            res.status(400).json(err)
         });
 }
 
 //GET 
 const nomeLogin = (req, res) => {
 
-    const { nome } = request.params;
+    const { nome } = req.params;
 
     usuaria.find({ nome: nome })
         .then((nome) => {
-            response.status(200).json(nome);
+            res.status(200).json(nome);
         })
         .catch((err) => {
-            response.status(400).json(err)
+            res.status(400).json(err)
         });
 }
 
@@ -59,7 +61,7 @@ const novoLogin = async (req, resp, next) => {
             .catch(err => next(err));
 
     } catch (e) {
-        return response.status(401).json({ error: 'erro' });
+        return res.status(401).json({ error: 'erro' });
     }
 }
 
