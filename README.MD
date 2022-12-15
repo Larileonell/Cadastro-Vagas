@@ -27,8 +27,7 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
  | `render` |é usado para referir-se à disponibilização de um software ou uma plataforma, seja para produção ou testes. |
 <br>
 ## 🗂️ Arquitetura  
- ````  
-   📁 projeto final 
+ ````  📁 projeto final 
    |  
    |-  📁 src    
    |    |
