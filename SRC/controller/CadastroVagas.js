@@ -1,5 +1,5 @@
 const cadastro = require("../models/cadastro");
-
+const { default: mongoose } = require("mongoose");
 //POST
 const cadastroVagas = async (req, res) => {
   try {
@@ -39,10 +39,9 @@ const atualizaVaga = async (req, res) => {
        habilidadesDesejaveis,
       vagaRemota,
        beneficios
-     
-    } = req.body;
-    const buscaVaga = await cadastro.findById(id);
-    if (buscaVaga == null) {
+     } = req.body;
+    const buscaVagas = await cadastro.findById(id);
+    if (buscaVagas == null) {
       res.status(404).json({ message: "vaga não definida" });
     };
 
@@ -78,38 +77,40 @@ const findAllVagas = async (req, res) => {
       res.status(500).json({ message: Error.message });
     };
   };
-  const findVagasId = async (req, res) => {
-    try {
-      const findVaga = await cadastro.findById(req.params.id).populate(
-        "vaga"
-      );
-      if (findVaga == null) {
-        res.status(404).json({ message: "Vaga não encontrada" });
-      }
-      res.status(200).json(findVaga);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    };
+  //get
+  const findVagasNome =  (req, res) => {
+    const { nomeDavaga } = req.params;
+
+    cadastro.find({nomeDavaga: nomeDavaga })
+        .then((nomeDavaga) => {
+            res.status(200).json(nomeDavaga);
+        })
+        .catch((err) => {
+            res.status(400).json(err)
+        });
   };
 //delete
-const deleteVaga = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const vagas = await cadastro.findById(id);
+const deleteVaga = (req, res) => {
+  const { id } = req.params
 
-    if (vagas == null) {
-      return res.status(404).json({ message: `Vaga com id de: ${id} não foi encontrada` })
-    };
-    await vagas.remove();
-    res.status(200).json({ message: `A Vaga foi excluída  ${id} pois já foi preenchida` });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  };
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res.status(400).json({ message: "Id inválido" });
+    return;
+  }
+
+  cadastro.findByIdAndDelete(id)
+    .then(() => {
+      res.status(200).json("cadastro excluido!");
+    })
+    .catch((err) => {
+      throw new Error(err);
+    });
+
 };
 module.exports ={
     cadastroVagas,
     findAllVagas, 
-    findVagasId,
+    findVagasNome,
     deleteVaga,
     atualizaVaga
 }
