@@ -108,3 +108,4 @@ Gratidão a   {reprograma} por ter me escolhido para essa oportunidade incrível
 <div>
 <a href= "https://www.linkedin.com/in/larissa-leonel-74557916b/" target= "_blank" ><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" ></a>
   </div>
+u
