@@ -2,7 +2,6 @@ const usuaria = require("../models/login")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
 const { default: mongoose } = require("mongoose");
-const { patch } = require("../routes/LoginRouter");
 const bcryptSalt = 8;
 
 //GET

@@ -1,11 +1,11 @@
-const DATABASE_ = process.env.DATABASE; 
+const DATABASE = process.env.DATABASE; 
 const mongoose=  require("mongoose"); 
- 
+mongoose.set('strictQuery', true)
   
  const connect = async () => { 
 
    try{ 
-     mongoose.connect(DATABASE_, { 
+     mongoose.connect(DATABASE, { 
      useNewUrlParser: true, 
     useUnifiedTopology: true,
 

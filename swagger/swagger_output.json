@@ -11,47 +11,8 @@
     "http"
   ],
   "paths": {
-    "/login/{id}": {
+    "/auth/{email}": {
       "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/login/{nome}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "nome",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/login/add": {
-      "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/login/{email}": {
-      "delete": {
         "description": "",
         "parameters": [
           {
@@ -71,7 +32,28 @@
         }
       }
     },
-    "/cadastro/cadastro": {
+    "/auth/{nome}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/auth/": {
       "post": {
         "description": "",
         "parameters": [
@@ -81,34 +63,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "nome": {
                   "example": "any"
                 },
-                "DescriçãoVaga": {
+                "email": {
                   "example": "any"
                 },
-                "plataforma": {
-                  "example": "any"
-                },
-                "remuneracao": {
-                  "example": "any"
-                },
-                "requisitos": {
-                  "example": "any"
-                },
-                "atribuioes": {
-                  "example": "any"
-                },
-                "Habilidades": {
-                  "example": "any"
-                },
-                "habilidadesDesejaveis": {
-                  "example": "any"
-                },
-                "vagaRemota": {
-                  "example": "any"
-                },
-                "beneficios": {
+                "senha": {
                   "example": "any"
                 }
               }
@@ -119,44 +80,6 @@
           "201": {
             "description": "Created"
           },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/cadastro/all": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/cadastro/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
           "404": {
             "description": "Not Found"
           },
@@ -164,7 +87,9 @@
             "description": "Internal Server Error"
           }
         }
-      },
+      }
+    },
+    "/auth/{id}": {
       "delete": {
         "description": "",
         "parameters": [
@@ -179,11 +104,8 @@
           "200": {
             "description": "OK"
           },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -202,9 +124,39 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "nome": {
                   "example": "any"
                 },
+                "email": {
+                  "example": "any"
+                },
+                "senha": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vagas/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
                 "DescriçãoVaga": {
                   "example": "any"
                 },
@@ -217,7 +169,7 @@
                 "requisitos": {
                   "example": "any"
                 },
-                "atribuioes": {
+                "atribuicoes": {
                   "example": "any"
                 },
                 "Habilidades": {
@@ -231,6 +183,124 @@
                 },
                 "beneficios": {
                   "example": "any"
+                },
+                "nomeDavaga": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vagas/{nome}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/vagas/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "DescriçãoVaga": {
+                  "example": "any"
+                },
+                "plataforma": {
+                  "example": "any"
+                },
+                "remuneracao": {
+                  "example": "any"
+                },
+                "requisitos": {
+                  "example": "any"
+                },
+                "atribuicoes": {
+                  "example": "any"
+                },
+                "Habilidades": {
+                  "example": "any"
+                },
+                "habilidadesDesejaveis": {
+                  "example": "any"
+                },
+                "vagaRemota": {
+                  "example": "any"
+                },
+                "beneficios": {
+                  "example": "any"
+                },
+                "nomeDavaga": {
+                  "example": "any"
                 }
               }
             }
@@ -239,9 +309,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"

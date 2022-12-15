@@ -1,6 +1,6 @@
 const express =  require("express") 
 const router =  express.Router(); 
-const controller = require("../controller/ControllerLogin")
+const controller = require("../controller/ControllerAuth")
 
 router.post("/:email", controller.login)
 router.get("/:nome", controller.nomeLogin)

@@ -1,24 +1,16 @@
+require('dotenv').config();
 const swaggerUi = require("swagger-ui-express")
 const swaggerFile = require('../swagger/swagger_output.json')
 const express = require("express")
 const app = express()
-const mongoose = require("mongoose");
-const dotenv = require('dotenv');
-const rotaCadastro = require("./routes/cadastroVagasRoutes")
-const loginRouter = require("./routes/LoginRouter")
+const vagasRouter = require("./routes/vagasRoutes")
+const authRouter = require("./routes/authRoutes")
+const bd = require("./database/moongoseConnect")
+bd.connect()
 
-dotenv.config();
-mongoose.set('strictQuery', true)
-mongoose.connect(`${process.env.DATABASE}`,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        
-    });
-   
-    app.use(express.json())
-    app.use('/minha-rota-de-documentacao', swaggerUi.serve, swaggerUi.setup(swaggerFile));
-    app.use("/login", loginRouter)
-    app.use("/cadastro", rotaCadastro)
-   
-    module.exports = app
+app.use(express.json())
+app.use('/minha-rota-de-documentacao', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use("/auth", authRouter)
+app.use("/vagas", vagasRouter)
+
+module.exports = app
