@@ -5,7 +5,7 @@
 
 
 
-#  Projeto final {REPROGRAMA} API Para Cadastro de vagas para Mulheres TRANS E CIS na área de tech 👭🚀 
+#  Projeto final {REPROGRAMA} API Para vagas de vagas para Mulheres TRANS E CIS na área de tech 👭🚀 
 
 ## 📑 Introdução
 Esse projeto final  foi pensando para ajudar todas as irmãs que estão começando agora na área de tech, a ajuda-lás a encontras as vagas que mais se encaixam no seu perfil 
@@ -51,7 +51,7 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
    |         |- 📄 authRoutes.js   
    |         |- 📄 vagasRoutes.js  
    |    |- 📁 test
-   |         |- 📄 cadastro.test.js   
+   |         |- 📄 vagas.test.js   
    |         |- 📄 login.test.js    
    |    |- 📄 app.js
    |
@@ -66,19 +66,19 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
 
 <br>
 
-### 💻 Rotas de Login e Cadastro
+### 💻 Rotas de Login e vagas
 | ROTA | ENDPOINT | DESCRIÇÃO | 
 | --- | --- | --- | 
-| `POST` |/login/:email | Busca login por email | 
-| `GET` | /login/all|Lista os logins por nome| 
-| `POST` | /login |Cadastra um novo login| 
-| `DELETE` | /login/:id| Deleta o login por id| 
-| `PATCH` |/login/:id |Atualiza um login| 
-| `POST` | /| Faz o cadastramento de uma nova vaga| 
-| `GET` | /cadastro/|Lista todas as vagas cadastradas|
-| `GET` | /cadastro/:nome|Lista por nome|  
-| `DELETE` | /cadastro/:id| Finaliza uma vaga já finalizada por id| 
-| `PATCH` |/cadastro/:id |Atualiza uma vaga já cadastrada| 
+| `POST` |/auth/:email | Busca login por email | 
+| `GET` | /auth/all|Lista os logins por nome| 
+| `POST` | /auth |Cadastra um novo login| 
+| `DELETE` | /auth/:id| Deleta o login por id| 
+| `PATCH` |/auth/:id |Atualiza um login| 
+| `POST` | vagas/| Faz o cadastramento de uma nova vaga| 
+| `GET` | /vagas/|Lista todas as vagas cadastradas|
+| `GET` | /vagas/:nome|Lista por nome|  
+| `DELETE` | /vagas/:id| Finaliza uma vaga já finalizada por id| 
+| `PATCH` |/vagas/:id |Atualiza uma vaga já cadastrada| 
 
 <br>
 
