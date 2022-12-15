@@ -29,9 +29,9 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
 ## 🗂️ Arquitetura  
  ````  📁 projeto final 
    |  
-   |-  📁 src    
+   |-   |  -  📁 src    
    |    |
-   |- 📁 controllers  
+   |-   | - 📁 controllers  
    |         |- 📄 consolesController.js  
    |         |- 📄 gamesController.js  
    |  
