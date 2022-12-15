@@ -46,7 +46,7 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
    |    |- 📁 routes  
    |         |- 📄 consolesRoutes.js   
    |         |- 📄 gamesRoutes.js  
-     |- 📁 test
+   |    |- 📁 test
    |         |- 📄 cadastro.test.js   
    |         |- 📄 login.test.js    
    |    |- 📄 app.js
