@@ -3,8 +3,8 @@ const cadastro = require("../models/cadastro");
 //POST
 const cadastroVagas = async (req, res) => {
 
-  const { _id, DescriçãoVaga, plataforma, remuneracao, requisitos, atribuioes, Habilidades, habilidadesDesejaveis,
-    vagaRemota, beneficios } = req.body;
+  const {  DescriçãoVaga, plataforma, remuneracao, requisitos, atribuicoes, Habilidades, habilidadesDesejaveis,
+    vagaRemota, beneficios,  nomeDavaga } = req.body;
 
   try {
 
@@ -15,8 +15,8 @@ const cadastroVagas = async (req, res) => {
           res.status(400).json("Vaga cadastrada");
         } else {
           const novaVaga = new Vaga({
-            _id, DescriçãoVaga, plataforma, remuneracao, requisitos, atribuioes, Habilidades, habilidadesDesejaveis,
-            vagaRemota, beneficios
+             DescriçãoVaga, plataforma, remuneracao, requisitos, atribuicoes, Habilidades, habilidadesDesejaveis,
+            vagaRemota, beneficios,  nomeDavaga
           });
           novaVaga.save()
             .then((res) => {
@@ -44,7 +44,7 @@ const atualizaVaga = async (req, res) => {
       plataforma,
        remuneracao, 
        requisitos, 
-       atribuioes, 
+       atribuicoes, 
        Habilidades, 
        habilidadesDesejaveis,
       vagaRemota,
@@ -67,7 +67,7 @@ const atualizaVaga = async (req, res) => {
     buscaVaga.plataforma = plataforma|| buscaVaga.plataforma;
     buscaVaga.remuneracao = remuneracao|| buscaVaga.remuneracao;
     buscaVaga.requisitos = requisitos|| buscaVaga.requisitos;
-    buscaVaga.atribuioes =atribuioes || buscaVaga.atribuioes;
+    buscaVaga.atribuicoes =atribuicoes || buscaVaga.atribuicoes;
     buscaVaga.Habilidades = Habilidades || buscaVaga.Habilidades;
     buscaVaga.habilidadesDesejaveis = habilidadesDesejaveis|| buscaVaga.habilidadesDesejaveis;
     buscaVaga.vagaRemota = vagaRemota || buscaVaga.vagaRemota;

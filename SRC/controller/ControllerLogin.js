@@ -31,37 +31,42 @@ const nomeLogin = (req, res) => {
 }
 
 //POST
-const novoLogin = async (req, resp, next) => {
-    const { nome, email } = request.body;
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-
+const novoLogin = async (req, res) => {
+    console.log("passou por aqui")
+    const { nome, email, senha } = req.body;
+    //const salt = bcrypt.genSaltSync(bcryptSalt);
+    
     try {
-        const hashPass = await bcrypt.hashSync(password, salt);
-
-        const novaUsuaria = new usuaria({
-            nome,
-            email,
-            hashPass
-        });
-
+        //const hashPass = await bcrypt.hashSync(password, salt);
         usuaria.findOne({ email: email })
             .then((email => {
                 if (email) {
-                    response.status(401).json("email já cadastrado")
+                    res.status(401).json("email já cadastrado")
 
                 } else {
+                    const novaUsuaria = new usuaria({
+                        nome,
+                        email,
+                        senha,
+                       //hashPass
+                    });
+                      
                     novaUsuaria.save()
                         .then((usuaria) => {
-                            response.status(201).json(usuaria);
+                            res.status(201).json(usuaria);
                         })
-                        .catch(err => next(err));
+                        .catch((err)=>{
+                            res.status(400).json(err)
+                        });
                 }
                 console.log(usuaria)
             }))
-            .catch(err => next(err));
+            .catch((err)=> {
+                res.status(500).json(err)
+            });
 
-    } catch (e) {
-        return res.status(401).json({ error: 'erro' });
+    } catch (err) {
+        return res.status(400).json({ error: message });
     }
 }
 
