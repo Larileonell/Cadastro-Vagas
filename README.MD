@@ -1,6 +1,6 @@
-<h1 align="center">
-  <img src="assets/reprograma-fundos-claros.png" alt="logo reprograma" width="500">
-</h1>
+
+ ## <img src="![reprograma-fundos-claros](https://user-images.githubusercontent.com/109538430/207935999-d05a66fa-be80-4b6a-9ff7-13b65757ae82.png)"width="200">
+
 
 #  Projeto final {REPROGRAMA} API Para Cadastro de vagas para Mulheres TRANS E CIS na área de tech 👭🚀 
 
