@@ -99,10 +99,12 @@ Commit as alterações feitas e abra um pull request
 
 
 ### 💜 Agradecimentos
-
+Gratidão a   {reprograma} por ter me escolhido para essa oportunidade incrível, vocês fizeram mudança na minha vida pessoal e profissinal. A todas as mulheres incríveis da {reprograma}, em especial a may que me ajudou muito durante toda a trajétoria,a gaia, a Suzik, a Dari, a jani e a Agnis muito obrigada meninas vocês são extremamentes necessárias. as meninas da on19 que eu tive a SORTE de conhecer, vocês foram ponto de apoio nessa caminhada.  A minha família, amigos e todos que fizeram parte da construção desse sonho. Meus sinceros obrigada. 🤍👩‍🎓
 
 
 
 
 ### ♓ Desenvolvido por:
-
+<div>
+<a href= "https://www.linkedin.com/in/larissa-leonel-74557916b/" target= "_blank" ><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" ></a>
+  </div>
