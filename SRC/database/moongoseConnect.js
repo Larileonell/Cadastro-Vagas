@@ -1,16 +1,16 @@
-
+const DATABASE_ = process.env.DATABASE; 
 const mongoose=  require("mongoose"); 
  
-const DATABASE_ = process.env.DATABASE; 
-  
-
   
  const connect = async () => { 
-    try{ 
+
+   try{ 
      mongoose.connect(DATABASE_, { 
      useNewUrlParser: true, 
-    useUnifiedTopology: true, 
+    useUnifiedTopology: true,
+
  }); 
+ 
    console.log("Database connected"); 
   } catch (error) { 
    console.log(error); 

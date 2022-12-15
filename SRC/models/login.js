@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const LoginShema = new mongoose.Schema({
+const {Schema} = mongoose
+
+const LoginShema = new Schema({
     id: {
         type: mongoose.Schema.Types.ObjectId,
         default: mongoose.Types.ObjectId,

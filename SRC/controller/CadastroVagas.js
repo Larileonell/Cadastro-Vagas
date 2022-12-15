@@ -2,44 +2,34 @@ const cadastro = require("../models/cadastro");
 
 //POST
 const cadastroVagas = async (req, res) => {
-
+  try {
   const {  DescriçãoVaga, plataforma, remuneracao, requisitos, atribuicoes, Habilidades, habilidadesDesejaveis,
     vagaRemota, beneficios,  nomeDavaga } = req.body;
+    const findEmail = await cadastro.findOne({nomeDavaga});
+    
+        if (findEmail) {
+          return res.status(404).json({ message: "Vaga já Cadastrada" });
+        };
+    
+        const novoCadastro = new cadastro({
+          DescriçãoVaga, plataforma, remuneracao, requisitos, atribuicoes, Habilidades, habilidadesDesejaveis,
+    vagaRemota, beneficios,  nomeDavaga
+          
+        });
+        const savedcadastro = await novoCadastro.save();
+        res.status(201).json({ message: " cadastrada com sucesso!", savedcadastro });
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+      };
 
-  try {
-
-    cadastro.findOne({ DescriçãoVaga: DescriçãoVaga })
-      .then((DescriçãoVaga) => {
-
-        if (DescriçãoVaga) {
-          res.status(400).json("Vaga cadastrada");
-        } else {
-          const novaVaga = new Vaga({
-             DescriçãoVaga, plataforma, remuneracao, requisitos, atribuicoes, Habilidades, habilidadesDesejaveis,
-            vagaRemota, beneficios,  nomeDavaga
-          });
-          novaVaga.save()
-            .then((res) => {
-              res.status(201).json(res);
-            })
-            .catch((err) => {
-              res.status(400).json(err);
-            });
-        }
-      })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
-  } catch (err) {
-    return res.status(400).json({ error: err.message })
-  }
+  
 }
 //patch
 const atualizaVaga = async (req, res) => {
   try {
     const { id } = req.params;
     const {
-      _id, 
       DescriçãoVaga, 
       plataforma,
        remuneracao, 
@@ -51,13 +41,13 @@ const atualizaVaga = async (req, res) => {
        beneficios
      
     } = req.body;
-    const buscaVaga = await gamesModel.findById(id);
+    const buscaVaga = await cadastro.findById(id);
     if (buscaVaga == null) {
       res.status(404).json({ message: "vaga não definida" });
     };
 
-    if (consoleId) {
-      const buscaVaga = await consolesModel.findById(consoleId);
+    if (id) {
+      const buscaVaga = await cadastro.findById(consoleId);
 
       if (findConsole == null) {
         return res.status(404).json({ message: "vaga não encontrada" });
@@ -72,8 +62,8 @@ const atualizaVaga = async (req, res) => {
     buscaVaga.habilidadesDesejaveis = habilidadesDesejaveis|| buscaVaga.habilidadesDesejaveis;
     buscaVaga.vagaRemota = vagaRemota || buscaVaga.vagaRemota;
     buscaVaga.beneficios = beneficios || buscaVaga.beneficios;
-    const updateGame = await buscaVaga.save();
-    res.status(200).json({ message: "Vaga atualizada", updateGame });
+    const updateVaga = await buscaVaga.save();
+    res.status(200).json({ message: "Vaga atualizada", updateVaga });
   } catch (error) {
     res.status(500).json({ message: error.message });
   };

@@ -2,6 +2,7 @@ const usuaria = require("../models/login")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
 const { default: mongoose } = require("mongoose");
+const { patch } = require("../routes/LoginRouter");
 const bcryptSalt = 8;
 
 //GET
@@ -15,6 +16,7 @@ const login = (req, res) => {
             res.status(400).json(err)
         });
 }
+
 
 //GET 
 const nomeLogin = (req, res) => {
@@ -32,56 +34,56 @@ const nomeLogin = (req, res) => {
 
 //POST
 const novoLogin = async (req, res) => {
-    console.log("passou por aqui")
-    const { nome, email, senha } = req.body;
-    //const salt = bcrypt.genSaltSync(bcryptSalt);
-    
     try {
-        //const hashPass = await bcrypt.hashSync(password, salt);
-        usuaria.findOne({ email: email })
-            .then((email => {
-                if (email) {
-                    res.status(401).json("email já cadastrado")
-
-                } else {
-                    const novaUsuaria = new usuaria({
-                        nome,
-                        email,
-                        senha,
-                       //hashPass
-                    });
-                      
-                    novaUsuaria.save()
-                        .then((usuaria) => {
-                            res.status(201).json(usuaria);
-                        })
-                        .catch((err)=>{
-                            res.status(400).json(err)
-                        });
-                }
-                console.log(usuaria)
-            }))
-            .catch((err)=> {
-                res.status(500).json(err)
-            });
-
-    } catch (err) {
-        return res.status(400).json({ error: message });
-    }
-}
+        const {
+          nome, 
+          email,
+          senha
+       
+          
+        } = req.body;
+    
+       /* if (!email) {
+          return res.status(400).json({ message: "email  já." });
+        };*/
+    
+        const findEmail = await usuaria.findOne({email});
+    
+        if (findEmail) {
+          return res.status(404).json({ message: "Usuaria já Cadastrada" });
+        };
+    
+        const newUsuaria = new usuaria({
+          nome,
+          email,
+          senha
+          
+        });
+        const savedUsuaria = await newUsuaria.save();
+        res.status(201).json({ message: "Usuaria cadastrada com sucesso!", savedUsuaria });
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+      };
+    };
+   
+   //patch
+   
+   
+   
 
 //DELETE
-const cadastroExcluido = (request, response) => {
-    const { id } = request.params
+const cadastroExcluido = (req, res) => {
+    const { id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        response.status(400).json({ message: "Id inválido" });
+        res.status(400).json({ message: "Id inválido" });
         return;
     }
 
     usuaria.findByIdAndDelete(id)
         .then(() => {
-            response.status(200).json("Usuaria teve seu cadastro excluido");
+            res.status(200).json("Produto excluido!");
         })
         .catch((err) => {
             throw new Error(err);
@@ -89,11 +91,14 @@ const cadastroExcluido = (request, response) => {
 }
 
 
+
+
 module.exports = {
     login,
     nomeLogin,
     novoLogin,
     cadastroExcluido
+   
 
 
 }
