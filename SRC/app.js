@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const dotenv = require('dotenv');
 const rotaCadastro = require("./routes/cadastroVagasRoutes")
 const loginRouter = require("./routes/LoginRouter")
+
 dotenv.config();
 mongoose.set('strictQuery', true)
 mongoose.connect(`${process.env.DATABASE}`,

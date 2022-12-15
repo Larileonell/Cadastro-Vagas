@@ -28,44 +28,18 @@ const cadastroVagas = async (req, res) => {
 //patch
 const atualizaVaga = async (req, res) => {
   try {
-    const { id } = req.params;
-    const {
-      DescriçãoVaga, 
-      plataforma,
-       remuneracao, 
-       requisitos, 
-       atribuicoes, 
-       Habilidades, 
-       habilidadesDesejaveis,
-      vagaRemota,
-       beneficios
-     } = req.body;
-    const buscaVagas = await cadastro.findById(id);
-    if (buscaVagas == null) {
-      res.status(404).json({ message: "vaga não definida" });
-    };
-
-    if (id) {
-      const buscaVaga = await cadastro.findById(consoleId);
-
-      if (findConsole == null) {
-        return res.status(404).json({ message: "vaga não encontrada" });
-      };
-    };
-    buscaVaga.DescriçãoVaga = DescriçãoVaga || buscaVaga.DescriçãoVaga;
-    buscaVaga.plataforma = plataforma|| buscaVaga.plataforma;
-    buscaVaga.remuneracao = remuneracao|| buscaVaga.remuneracao;
-    buscaVaga.requisitos = requisitos|| buscaVaga.requisitos;
-    buscaVaga.atribuicoes =atribuicoes || buscaVaga.atribuicoes;
-    buscaVaga.Habilidades = Habilidades || buscaVaga.Habilidades;
-    buscaVaga.habilidadesDesejaveis = habilidadesDesejaveis|| buscaVaga.habilidadesDesejaveis;
-    buscaVaga.vagaRemota = vagaRemota || buscaVaga.vagaRemota;
-    buscaVaga.beneficios = beneficios || buscaVaga.beneficios;
-    const updateVaga = await buscaVaga.save();
-    res.status(200).json({ message: "Vaga atualizada", updateVaga });
-  } catch (error) {
+    const {DescriçãoVaga, plataforma, remuneracao, requisitos, atribuicoes, Habilidades, habilidadesDesejaveis,
+      vagaRemota, beneficios,  nomeDavaga
+    } = req.body;
+    const vagaAtualizada = await cadastro.findByIdAndUpdate(req.params.id,{
+      DescriçãoVaga, plataforma, remuneracao, requisitos, atribuicoes, Habilidades, habilidadesDesejaveis,
+      vagaRemota, beneficios,  nomeDavaga
+    });
+    res.status(200).json({ message: "Vaga atualizada com sucesso", vagaAtualizada });
+} catch (error) {
+    console.log(error);
     res.status(500).json({ message: error.message });
-  };
+}
 };
 
 //GET

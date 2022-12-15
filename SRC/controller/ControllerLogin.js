@@ -68,7 +68,23 @@ const novoLogin = async (req, res) => {
     };
    
    //patch
-   
+   const atualizaLogin = async (req, res) => {
+    try {
+      const {nome, 
+        email,
+        senha
+      } = req.body;
+      const loginAtt = await usuaria.findByIdAndUpdate(req.params.id,{
+        nome, 
+          email,
+          senha
+      });
+      res.status(200).json({ message: "Login atualizado com sucesso", loginAtt });
+  } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: error.message });
+  }
+  };
    
    
 
@@ -97,7 +113,8 @@ module.exports = {
     login,
     nomeLogin,
     novoLogin,
-    cadastroExcluido
+    cadastroExcluido, 
+    atualizaLogin
    
 
 

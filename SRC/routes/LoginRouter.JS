@@ -6,6 +6,7 @@ router.post("/add", controller.login)
 router.get("/:nome", controller.nomeLogin)
 router.post("/", controller.novoLogin )
 router.delete("/:id", controller.cadastroExcluido)
+router.patch("/:id", controller.atualizaLogin)
 
 
 
