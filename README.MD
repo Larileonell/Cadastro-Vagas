@@ -37,8 +37,8 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
    |-   |  -  📁 src    
    |    |
    |-   | - 📁 controllers  
-   |         |- 📄 consolesController.js  
-   |         |- 📄 gamesController.js  
+   |         |- 📄 controllerauth.js  
+   |         |- 📄 controllerVagas.js  
    |  
    |    |- 📁 database  
    |         |- 📄 mongooseConnect.js  
@@ -48,8 +48,8 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
    |         |- 📄 gamesModel.js  
    |  
    |    |- 📁 routes  
-   |         |- 📄 consolesRoutes.js   
-   |         |- 📄 gamesRoutes.js  
+   |         |- 📄 authRoutes.js   
+   |         |- 📄 vagasRoutes.js  
    |    |- 📁 test
    |         |- 📄 cadastro.test.js   
    |         |- 📄 login.test.js    
@@ -74,8 +74,8 @@ O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas
 | `POST` | /login |Cadastra um novo login| 
 | `DELETE` | /login/:id| Deleta o login por id| 
 | `PATCH` |/login/:id |Atualiza um login| 
-| `POST` | /Cadastro| Faz o cadastramento de uma nova vaga| 
-| `GET` | /cadastro/all|Lista todas as vagas cadastradas|
+| `POST` | /| Faz o cadastramento de uma nova vaga| 
+| `GET` | /cadastro/|Lista todas as vagas cadastradas|
 | `GET` | /cadastro/:nome|Lista por nome|  
 | `DELETE` | /cadastro/:id| Finaliza uma vaga já finalizada por id| 
 | `PATCH` |/cadastro/:id |Atualiza uma vaga já cadastrada| 
