@@ -10,7 +10,7 @@
 ## 📑 Introdução
 Esse projeto final  foi pensando para ajudar todas as irmãs que estão começando agora na área de tech, a ajuda-lás a encontras as vagas que mais se encaixam no seu perfil 
 ## 📑 Objetivo
-O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas para elas ficarem de uma certa forma mais acessível para as mulheres que estão ingressando no mundo da tech.
+O objetivo desse projeto é cadastrar vagas de diferentes plataformas e empresas para elas fiquem de uma certa forma mais acessível de se econtrar para as mulheres que estão inciando no mundo da tech.
 
 ## 🛠️Tecnologias utilizadas:
 
