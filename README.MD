@@ -5,7 +5,7 @@
 
 
 
-#  Projeto final {REPROGRAMA} API Para vagas de vagas para Mulheres TRANS E CIS na área de tech 👭🚀 
+#  Projeto final {REPROGRAMA} API cadastramento e acesso a vagas 👭🚀 
 
 ## 📑 Introdução
 Esse projeto final  foi pensando para ajudar todas as irmãs que estão começando agora na área de tech, a ajuda-lás a encontras as vagas que mais se encaixam no seu perfil 
